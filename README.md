@@ -4,7 +4,7 @@
 
 This repository serves as the foundation for a semester-long Android Mobile Application Development project. Students will use Java and Android Studio to design, build, test and enhance a mobile application through multiple assignment phases.
 
-Rather than creating a new repository for each assignment, students will continuously develop the same application throughout the semester. This approach enables proper version control, demonstrates project evolution, and allows lecturers to review each student's development process using GitHub.
+Rather than creating a new repository for each assignment, students will continuously develop the same application throughout the semester. This approach enables proper version control, demonstrates project evolution and allows lecturers to review each student's development process using GitHub.
 
 ---
 
@@ -17,49 +17,57 @@ By participating in this project, students will learn how to:
 * Use Git and GitHub for version control.
 * Manage software development through incremental improvements.
 * Document software projects professionally.
-* Track application changes through commits, branches, and releases.
+* Track application changes through commits, branches and releases.
 * Collaborate using industry-standard development workflows.
 
 ---
 
 ## Repository Structure
 
+⚠️ The Android Studio project is **not provided** in this repository. Each student is required to create their own Android Studio project after cloning the repository and creating their personal branch.
+
+Your repository structure should look similar to the following after creating your project:
+
 ```text
 ktu-android-mobile-app-project/
-│
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   ├── res/
-│   │   │   └── AndroidManifest.xml
-│
-├── gradle/
+├── YourProjectName/
+│   ├── app/
+│   │   ├── manifests/
+│   │   ├── kotlin+java/
+│   │   │   ├── com.example.yourproject
+│   │   │   │   └── MainActivity.java
+│   │   │   ├── com.example.yourproject (androidTest)
+│   │   │   └── com.example.yourproject (test)
+│   │   ├── res/
+│   │   └── build.gradle
+│   ├── gradle/
+│   ├── Gradle Scripts/
+│   ├── build.gradle
+│   ├── settings.gradle
+│   ├── gradlew
+│   └── gradlew.bat
 ├── screenshots/
-│   └── Screenshot_IndexNumber.png
-│
-├── README.md
-├── build.gradle
-├── settings.gradle
-├── gradlew
-└── gradlew.bat
+│   ├── Screenshot_B202230015.png
+│   └── Screenshot_B202230015_2.png
+└── README.md
 ```
 
----
+### Important Notes
+
+- `YourProjectName` should be replaced with the name of your Android application project.
+- The Android Studio project **must be created inside the cloned repository folder**.
+- Do not create the Android Studio project outside the repository and then upload it later.
+
 
 ## Assignment Workflow
 
-Each assignment will build upon the previous version of your application.
-
-Example:
+Each assignment will build upon the same Android project.
 
 ### Assignment 1
 
 * Create project structure.
-* Design an android app.
-* Implement basic navigation including a linear and horizontal layout that can scroll
-
-Students must continue developing the same project throughout the semester.
+* Design an Android app.
+* Implement basic navigation including linear and horizontal scrollable layouts.
 
 ---
 
@@ -69,11 +77,9 @@ Students must continue developing the same project throughout the semester.
 
 Click the **Fork** button on GitHub to create your own copy of this repository.
 
-Example:
-
 ```text
 Original Repository:
-ktu-android-mobile-app-project
+ktu-android-mobile-mobile-app-project
 
 Your Fork:
 your-github-username/ktu-android-mobile-app-project
@@ -87,11 +93,64 @@ Clone your fork to your local machine.
 
 ```bash
 git clone https://github.com/your-username/ktu-android-mobile-app-project.git
+cd ktu-android-mobile-app-project
 ```
 
 ---
 
-### Step 3: Open in Android Studio
+## Step 3: Clone from Main Branch and Create Personal Working Branch (IMPORTANT)
+
+All students must strictly clone from the **main branch** as the official starting point of the project.
+
+### 3.1 Ensure you are on main branch
+
+```bash
+git checkout main
+git pull origin main
+```
+
+Verify your branch:
+
+```bash
+git branch
+```
+
+Expected output:
+
+```text
+* main
+```
+
+---
+
+### 3.2 Create your personal working branch
+
+Each student must create a **branch using their Student ID** before starting any development.
+
+Example (Student ID: B202230015):
+
+```bash
+git checkout -b B202230015
+```
+
+Push the branch to GitHub:
+
+```bash
+git push -u origin B202230015
+```
+
+---
+
+### Branch Rules
+
+* All development work must be done on your **Student ID branch only**.
+* Do NOT commit directly to the `main` branch.
+* Do NOT rename your branch after creation.
+* Do NOT merge your branch into `main`.
+
+---
+
+### Step 4: Open in Android Studio
 
 1. Launch Android Studio.
 2. Select **Open Project**.
@@ -100,9 +159,48 @@ git clone https://github.com/your-username/ktu-android-mobile-app-project.git
 
 ---
 
-### Step 4: Develop Your Application
+## Step 5: Create Android Studio Project (IMPORTANT STEP)
 
-Implement the assignment requirements within the project.
+After cloning and switching to your branch:
+
+### Follow these steps in Android Studio:
+
+1. Open **Android Studio**
+2. Click **New Project**
+3. Select:
+
+   ```
+   Empty Views Activity
+   ```
+4. Configure:
+
+   * Name your project (e.g. `MyMobileApp`)
+   * Language: **Java**
+   * Minimum SDK:
+
+     ```
+     API 24 (Nougat - Android 7.0)
+     ```
+5. Click **Finish**
+6. Wait for **Gradle Sync to complete**
+
+---
+
+### IMPORTANT RULE:
+
+👉 When Android Studio asks for project location, select:
+
+```text
+ktu-android-mobile-app-project/YourAndroidProject/
+```
+
+This ensures your Android project is stored inside the Git repository.
+
+---
+
+### Step 6: Develop Your Application
+
+Implement the assignment requirements within your personal branch.
 
 Students are encouraged to:
 
@@ -115,21 +213,8 @@ Example:
 ```bash
 git add .
 git commit -m "Added user registration screen"
-git push origin main
+git push origin B202230015
 ```
-
----
-
-### Step 5: Document Your Work
-
-Update the README with:
-
-* Student Name
-* Student ID
-* Application Name
-* Assignment Progress
-* Features Implemented
-* Screenshots
 
 ---
 
@@ -140,6 +225,8 @@ Each student repository must contain:
 ### Source Code
 
 All Android Studio source files required to build and run the application.
+
+---
 
 ### Screenshot Folder
 
@@ -158,26 +245,6 @@ The screenshot must clearly show the application's main screen.
 Additional screenshots may be added to demonstrate implemented features.
 
 ---
-
-### Project Documentation
-
-Update this README to include:
-
-#### Student Information
-
-```text
-Name: John Doe
-Student ID: B202230014
-Course: Mobile Application Development
-```
-
-#### Application Information
-
-```text
-Application Name: Smart Expense Tracker
-```
-
-
 
 ## Assignment Milestones
 
@@ -208,7 +275,7 @@ This allows lecturers to review the project at specific submission points.
 
 Use descriptive commit messages.
 
-Good Examples:
+### Good Examples:
 
 ```text
 Added login activity
@@ -218,7 +285,7 @@ Added navigation drawer
 Fixed input validation bug
 ```
 
-Avoid:
+### Avoid:
 
 ```text
 Update
@@ -268,4 +335,3 @@ If you encounter technical issues:
 2. Verify Gradle synchronization completed successfully.
 3. Check repository issues and announcements.
 4. Contact the course instructor or teaching assistant.
-
